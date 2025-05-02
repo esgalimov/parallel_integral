@@ -12,16 +12,19 @@ namespace integral {
 struct integral_thread_t {
     double start;
     double finish;
-    double n_steps;
 
+    int n_steps;
     int tid;
 
     std::vector<double>* res_vec;
 };
 
-double func(double x) { return std::sin(1 / x); }
+double func(double x) { 
+    return std::exp(-x * x);
+    //return std::sin(1 / x); 
+}
 
-void* thread_sort(void* arg) {
+void* thread_integral(void* arg) {
     integral_thread_t* data = static_cast<integral_thread_t*>(arg);
 
     double result = 0.0;
@@ -29,12 +32,17 @@ void* thread_sort(void* arg) {
     double step = (data->finish - data->start) / data->n_steps;
 
     for (int i = 0; i < data->n_steps; ++i) {
-        result += pos * step;
+        result += func(pos) * step;
         pos += step;
     }
-    *data->res_vec[tid] = result;
+    (*data->res_vec)[data->tid] = result;
 
     pthread_exit(NULL);
+}
+
+double get_finish(double start, double finish, int tid, int thr_num) {
+    double step = (finish - start) / thr_num;
+    return start + step * (tid + 1);
 }
 
 
