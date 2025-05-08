@@ -40,7 +40,7 @@ void* thread_integral(void* arg) {
     pthread_exit(NULL);
 }
 
-double get_finish(double start, double finish, int tid, int thr_num) {
+double get_bounder(double start, double finish, int tid, int thr_num) {
     double step = (finish - start) / thr_num;
     return start + step * (tid + 1);
 }

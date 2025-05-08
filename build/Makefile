@@ -127,41 +127,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named integral
+# Target rules for targets named stupid_integral
 
 # Build rule for target.
-integral: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 integral
-.PHONY : integral
+stupid_integral: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 stupid_integral
+.PHONY : stupid_integral
 
 # fast build rule for target.
-integral/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/build
-.PHONY : integral/fast
+stupid_integral/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/build
+.PHONY : stupid_integral/fast
 
-integral.o: integral.cc.o
-.PHONY : integral.o
+source/stupid_integral.o: source/stupid_integral.cc.o
+.PHONY : source/stupid_integral.o
 
 # target to build an object file
-integral.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/integral.cc.o
-.PHONY : integral.cc.o
+source/stupid_integral.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/source/stupid_integral.cc.o
+.PHONY : source/stupid_integral.cc.o
 
-integral.i: integral.cc.i
-.PHONY : integral.i
+source/stupid_integral.i: source/stupid_integral.cc.i
+.PHONY : source/stupid_integral.i
 
 # target to preprocess a source file
-integral.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/integral.cc.i
-.PHONY : integral.cc.i
+source/stupid_integral.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/source/stupid_integral.cc.i
+.PHONY : source/stupid_integral.cc.i
 
-integral.s: integral.cc.s
-.PHONY : integral.s
+source/stupid_integral.s: source/stupid_integral.cc.s
+.PHONY : source/stupid_integral.s
 
 # target to generate assembly for a file
-integral.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/integral.cc.s
-.PHONY : integral.cc.s
+source/stupid_integral.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/source/stupid_integral.cc.s
+.PHONY : source/stupid_integral.cc.s
 
 # Help Target
 help:
@@ -172,10 +172,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... integral"
-	@echo "... integral.o"
-	@echo "... integral.i"
-	@echo "... integral.s"
+	@echo "... stupid_integral"
+	@echo "... source/stupid_integral.o"
+	@echo "... source/stupid_integral.i"
+	@echo "... source/stupid_integral.s"
 .PHONY : help
 
 

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(integral)
+project(stupid_integral)
 
 set(CMAKE_CXX_COMPILER "g++")
 
@@ -19,10 +19,10 @@ endif()
 find_package(GTest REQUIRED)
 enable_testing()
 
-add_executable(integral ${CMAKE_CURRENT_SOURCE_DIR}/integral.cc)
+add_executable(stupid_integral ${CMAKE_CURRENT_SOURCE_DIR}/source/stupid_integral.cc)
 
 # add_executable(integral_test ${CMAKE_CURRENT_SOURCE_DIR}/integral_test.cc)
 # target_link_libraries(integral_test PRIVATE ${GTEST_LIBRARIES})
 
 
-target_include_directories(integral PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(stupid_integral PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include())

@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=integral
+CMAKE_PROJECT_NAME:STATIC=stupid_integral
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -220,6 +220,15 @@ integral_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 integral_SOURCE_DIR:STATIC=/home/esgalimov/Documents/par_prog/parallel_integral
+
+//Value Computed by CMake
+stupid_integral_BINARY_DIR:STATIC=/home/esgalimov/Documents/par_prog/parallel_integral/build
+
+//Value Computed by CMake
+stupid_integral_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+stupid_integral_SOURCE_DIR:STATIC=/home/esgalimov/Documents/par_prog/parallel_integral
 
 
 ########################

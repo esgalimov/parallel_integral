@@ -1,4 +1,4 @@
-#include "integral.hh"
+#include "stupid_integral.hh"
 
 
 
@@ -18,12 +18,10 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < thr_num; ++i) {
         it_data[i].tid = i;
         it_data[i].res_vec = &res_vec;
-        it_data[i].start  = integral::get_finish(start, finish, i - 1, thr_num);;
-        it_data[i].finish = integral::get_finish(start, finish, i, thr_num);
+        it_data[i].start  = integral::get_bounder(start, finish, i - 1, thr_num);;
+        it_data[i].finish = integral::get_bounder(start, finish, i, thr_num);
         it_data[i].n_steps = n_steps / thr_num;
     }
-
-    //pthread_barrier_init(&parallel_sorter::barrier, NULL, thr_num);
 
     for (int i = 0; i < thr_num; ++i) {
         int ret_code = pthread_create(&thr[i], NULL, integral::thread_integral, &it_data[i]);
