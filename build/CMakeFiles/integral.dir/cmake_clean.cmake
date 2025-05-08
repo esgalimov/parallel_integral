@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/integral.dir/integral.cc.o"
-  "CMakeFiles/integral.dir/integral.cc.o.d"
+  "CMakeFiles/integral.dir/source/integral.cc.o"
+  "CMakeFiles/integral.dir/source/integral.cc.o.d"
   "integral"
   "integral.pdb"
 )

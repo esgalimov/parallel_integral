@@ -4,7 +4,7 @@
 # compile CXX with g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/esgalimov/Documents/par_prog/parallel_integral
+CXX_INCLUDES = -I/home/esgalimov/Documents/par_prog/parallel_integral/include -I"/home/esgalimov/Documents/par_prog/parallel_integral/(" -I"/home/esgalimov/Documents/par_prog/parallel_integral/)"
 
 CXX_FLAGS = -O2 -std=c++20
 

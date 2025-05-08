@@ -1,5 +1,5 @@
-#ifndef MY_INTEGRAL
-#define MY_INTEGRAL
+#ifndef MY_STUPID_INTEGRAL
+#define MY_STUPID_INTEGRAL
 
 
 #include <iostream>
@@ -7,7 +7,7 @@
 #include <vector>
 #include <pthread.h>
 
-namespace integral {
+namespace stupid_integral {
 
 struct integral_thread_t {
     double start;

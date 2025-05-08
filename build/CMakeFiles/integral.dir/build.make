@@ -69,28 +69,28 @@ include CMakeFiles/integral.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/integral.dir/flags.make
 
-CMakeFiles/integral.dir/integral.cc.o: CMakeFiles/integral.dir/flags.make
-CMakeFiles/integral.dir/integral.cc.o: ../integral.cc
-CMakeFiles/integral.dir/integral.cc.o: CMakeFiles/integral.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/integral.dir/integral.cc.o"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integral.dir/integral.cc.o -MF CMakeFiles/integral.dir/integral.cc.o.d -o CMakeFiles/integral.dir/integral.cc.o -c /home/esgalimov/Documents/par_prog/parallel_integral/integral.cc
+CMakeFiles/integral.dir/source/integral.cc.o: CMakeFiles/integral.dir/flags.make
+CMakeFiles/integral.dir/source/integral.cc.o: ../source/integral.cc
+CMakeFiles/integral.dir/source/integral.cc.o: CMakeFiles/integral.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/integral.dir/source/integral.cc.o"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integral.dir/source/integral.cc.o -MF CMakeFiles/integral.dir/source/integral.cc.o.d -o CMakeFiles/integral.dir/source/integral.cc.o -c /home/esgalimov/Documents/par_prog/parallel_integral/source/integral.cc
 
-CMakeFiles/integral.dir/integral.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/integral.dir/integral.cc.i"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/esgalimov/Documents/par_prog/parallel_integral/integral.cc > CMakeFiles/integral.dir/integral.cc.i
+CMakeFiles/integral.dir/source/integral.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/integral.dir/source/integral.cc.i"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/esgalimov/Documents/par_prog/parallel_integral/source/integral.cc > CMakeFiles/integral.dir/source/integral.cc.i
 
-CMakeFiles/integral.dir/integral.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/integral.dir/integral.cc.s"
-	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/esgalimov/Documents/par_prog/parallel_integral/integral.cc -o CMakeFiles/integral.dir/integral.cc.s
+CMakeFiles/integral.dir/source/integral.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/integral.dir/source/integral.cc.s"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/esgalimov/Documents/par_prog/parallel_integral/source/integral.cc -o CMakeFiles/integral.dir/source/integral.cc.s
 
 # Object files for target integral
 integral_OBJECTS = \
-"CMakeFiles/integral.dir/integral.cc.o"
+"CMakeFiles/integral.dir/source/integral.cc.o"
 
 # External object files for target integral
 integral_EXTERNAL_OBJECTS =
 
-integral: CMakeFiles/integral.dir/integral.cc.o
+integral: CMakeFiles/integral.dir/source/integral.cc.o
 integral: CMakeFiles/integral.dir/build.make
 integral: CMakeFiles/integral.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable integral"

@@ -1,4 +1,5 @@
 /home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles/stupid_integral.dir
+/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles/integral.dir
 /home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles/test.dir
 /home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles/edit_cache.dir
 /home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles/rebuild_cache.dir

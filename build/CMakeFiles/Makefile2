@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/esgalimov/Documents/par_prog/parallel_integral/build
 
 # The main recursive "all" target.
 all: CMakeFiles/stupid_integral.dir/all
+all: CMakeFiles/integral.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/stupid_integral.dir/clean
+clean: CMakeFiles/integral.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,7 +83,7 @@ clean: CMakeFiles/stupid_integral.dir/clean
 CMakeFiles/stupid_integral.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles --progress-num=1,2 "Built target stupid_integral"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles --progress-num=3,4 "Built target stupid_integral"
 .PHONY : CMakeFiles/stupid_integral.dir/all
 
 # Build rule for subdir invocation for target.
@@ -99,6 +101,32 @@ stupid_integral: CMakeFiles/stupid_integral.dir/rule
 CMakeFiles/stupid_integral.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/stupid_integral.dir/build.make CMakeFiles/stupid_integral.dir/clean
 .PHONY : CMakeFiles/stupid_integral.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/integral.dir
+
+# All Build rule for target.
+CMakeFiles/integral.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles --progress-num=1,2 "Built target integral"
+.PHONY : CMakeFiles/integral.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/integral.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/integral.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/esgalimov/Documents/par_prog/parallel_integral/build/CMakeFiles 0
+.PHONY : CMakeFiles/integral.dir/rule
+
+# Convenience name for target.
+integral: CMakeFiles/integral.dir/rule
+.PHONY : integral
+
+# clean rule for target.
+CMakeFiles/integral.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integral.dir/build.make CMakeFiles/integral.dir/clean
+.PHONY : CMakeFiles/integral.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/esgalimov/Documents/par_prog/parallel_integral/integral.cc" "CMakeFiles/integral.dir/integral.cc.o" "gcc" "CMakeFiles/integral.dir/integral.cc.o.d"
+  "/home/esgalimov/Documents/par_prog/parallel_integral/source/integral.cc" "CMakeFiles/integral.dir/source/integral.cc.o" "gcc" "CMakeFiles/integral.dir/source/integral.cc.o.d"
   )
 
 # Targets to which this target links.
