@@ -1,1 +1,0 @@
-g++ -O2 CMakeFiles/integral.dir/source/integral.cc.o -o integral 

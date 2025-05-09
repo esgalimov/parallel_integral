@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(integral)
 
-set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_COMPILER "g++-12")
 
 set(CMAKE_CXX_STANDARD          20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
+    set(CMAKE_BUILD_TYPE S)
 endif()
 
 find_package(GTest REQUIRED)

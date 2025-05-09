@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include <stack>
+#include <vector>
 #include <stdexcept>
 
 #include <pthread.h>
@@ -25,25 +26,28 @@ struct sdat_t
 {
     std::stack<integral::task_t> global_stk;
     sem_t sem_stk;
+    sem_t sem_ans;
     sem_t sem_task_present;
     int nactive = 0;
-    double eps;
+    double eps = 0.000'000'1;
+    double ans = 0.0;
 } sdat;
 
 
 double func(double x) {
-    return std::exp(-x * x);
+    //return std::exp(-x * x);
+    return std::sin(1 / x);
+    //return 1;
 }
 
 void* thread_integral(void* arg) {
+    int* tid = static_cast<int*>(arg);
     std::stack<task_t> stk;
 
     double sum = 0.0;
 
     sem_wait(&sdat.sem_task_present);
     sem_wait(&sdat.sem_stk);
-
-    std::cout << "chich" << std::endl;
 
     task_t tsk = sdat.global_stk.top();
     sdat.global_stk.pop();
@@ -68,7 +72,7 @@ void* thread_integral(void* arg) {
 
         double s_all = s_left_middle + s_middle_right;
 
-        if (std::abs(s_all - s_left_right) >= sdat.eps * s_all) {
+        if (std::abs(s_all - s_left_right) >= sdat.eps) {
             stk.emplace(left, middle, f_left, f_middle, s_left_middle);
 
             left = middle;
@@ -79,21 +83,28 @@ void* thread_integral(void* arg) {
             sum += s_all;
 
             if (stk.empty()) {
-                std::cout << "chich2" << std::endl;
+                //std::cout << "cock1" << std::endl;
                 sem_wait(&sdat.sem_task_present);
                 sem_wait(&sdat.sem_stk);
 
-                task_t tsk = sdat.global_stk.top();
-                sdat.global_stk.pop();
-                stk.push(tsk);
+                int get_global_cnt = sdat.global_stk.size() <= 4 ? 1 : sdat.global_stk.size() / 4;
+                bool is_terminal = false;
+
+                for (int i = 0; i < get_global_cnt; ++i) {
+                    task_t tsk = sdat.global_stk.top();
+                    sdat.global_stk.pop();
+                    stk.push(tsk);
+                    if (tsk.left > tsk.right) is_terminal = true;
+                }
 
                 if (!sdat.global_stk.empty())
                     sem_post(&sdat.sem_task_present);
 
+                if (!is_terminal) sdat.nactive++;
+
                 sem_post(&sdat.sem_stk);
 
-                if (tsk.left <= tsk.right) sdat.nactive++;
-                else break;
+                if (is_terminal) { std::cout << "break " << sum << std::endl; break; }
                 
                 sem_wait(&sdat.sem_stk);
                 sdat.nactive--;
@@ -106,7 +117,6 @@ void* thread_integral(void* arg) {
                 }
                 sem_post(&sdat.sem_stk);
             }
-
             task_t tsk = stk.top();
             stk.pop();
 
@@ -119,20 +129,22 @@ void* thread_integral(void* arg) {
 
         int stk_sz = stk.size();
 
+        sem_wait(&sdat.sem_stk);
         if (stk_sz > MAX_ELEMS_LOCAL_STK && sdat.global_stk.empty()) {
-            std::cout << "chich3" << std::endl;
-            while (stk.size() >= stk_sz / 4) {
+            while (stk.size() > stk_sz / 4) {
                 task_t tsk = stk.top();
                 stk.pop();
-
-                sem_wait(&sdat.sem_stk);
                 sdat.global_stk.push(tsk);
-                sem_post(&sdat.sem_stk);
             }
             sem_post(&sdat.sem_task_present);
         }
+        sem_post(&sdat.sem_stk);
+
     }
-    std::cout << sum << std::endl;
+
+    sem_wait(&sdat.sem_ans);
+    sdat.ans += sum;
+    sem_post(&sdat.sem_ans);
     return NULL;
 }
 
@@ -155,7 +167,7 @@ double serial_integral_with_local_stack(double left, double right, double eps) {
 
         double s_all = s_left_middle + s_middle_right;
 
-        if (std::abs(s_all - s_left_right) >= eps * s_all) {
+        if (std::abs(s_all - s_left_right) >= eps) {
             stk.emplace(left, middle, f_left, f_middle, s_left_middle);
 
             left = middle;
