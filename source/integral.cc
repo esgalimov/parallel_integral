@@ -27,12 +27,12 @@ int main(int argc, char* argv[]) try {
                      (f_left + f_right) * (curr_right - curr_left) / 2);
     }
 
-    std::vector<pthread_t> thr(4);
-    std::vector<int> tids(4);
+    std::vector<pthread_t> thr(integral::THR_NUM);
+    std::vector<int> tids(integral::THR_NUM);
 
     auto start = std::chrono::high_resolution_clock::now();
 
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < integral::THR_NUM; ++i) {
         tids[i] = i;
         int ret_code = pthread_create(&thr[i], NULL, integral::thread_integral, &tids[i]);
 
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) try {
         }
     }
 
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < integral::THR_NUM; ++i) {
         pthread_join(thr[i], NULL);
     }
 
