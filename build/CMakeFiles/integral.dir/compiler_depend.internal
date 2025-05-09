@@ -233,4 +233,10 @@ CMakeFiles/integral.dir/source/integral.cc.o
  /usr/include/c++/11/bits/deque.tcc
  /usr/include/c++/11/bits/stl_stack.h
  /usr/include/c++/11/bits/uses_allocator.h
+ /usr/include/semaphore.h
+ /usr/include/x86_64-linux-gnu/bits/semaphore.h
+ /usr/include/c++/11/vector
+ /usr/include/c++/11/bits/stl_vector.h
+ /usr/include/c++/11/bits/stl_bvector.h
+ /usr/include/c++/11/bits/vector.tcc
 
