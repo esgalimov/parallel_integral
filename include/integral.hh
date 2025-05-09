@@ -20,7 +20,7 @@ struct task_t {
     double s_left_right;
 };
 
-constexpr int MAX_ELEMS_LOCAL_STK = 16;
+constexpr int MAX_ELEMS_LOCAL_STK = 4;
 
 struct sdat_t
 {
@@ -49,6 +49,8 @@ void* thread_integral(void* arg) {
     sem_wait(&sdat.sem_task_present);
     sem_wait(&sdat.sem_stk);
 
+    //std::cout << "got by " << *tid << std::endl;
+
     task_t tsk = sdat.global_stk.top();
     sdat.global_stk.pop();
 
@@ -72,6 +74,13 @@ void* thread_integral(void* arg) {
 
         double s_all = s_left_middle + s_middle_right;
 
+        // std::cout << left << " ";
+        // std::cout << middle << " ";
+        // std::cout << right << " ";
+        // std::cout << s_left_middle << " ";
+        // std::cout << s_middle_right << " ";
+        // std::cout << s_left_right << " " << std::endl;
+
         if (std::abs(s_all - s_left_right) >= sdat.eps) {
             stk.emplace(left, middle, f_left, f_middle, s_left_middle);
 
@@ -83,11 +92,11 @@ void* thread_integral(void* arg) {
             sum += s_all;
 
             if (stk.empty()) {
-                //std::cout << "cock1" << std::endl;
+                //std::cout << "cock1 " << *tid << std::endl;
                 sem_wait(&sdat.sem_task_present);
                 sem_wait(&sdat.sem_stk);
 
-                int get_global_cnt = sdat.global_stk.size() <= 4 ? 1 : sdat.global_stk.size() / 4;
+                // int get_global_cnt = sdat.global_stk.size() <= 4 ? 1 : sdat.global_stk.size() / 4;
                 bool is_terminal = false;
 
                 for (int i = 0; i < get_global_cnt; ++i) {
@@ -108,8 +117,9 @@ void* thread_integral(void* arg) {
                 
                 sem_wait(&sdat.sem_stk);
                 sdat.nactive--;
-
+                //std::cout << "HELLO1" << std::endl;
                 if (!sdat.nactive && sdat.global_stk.empty()) {
+                    //std::cout << "HELLO" << std::endl;
                     for (int i = 0; i < 4; ++i)
                         sdat.global_stk.emplace(2, 1, 0, 0, 0);
 
@@ -131,7 +141,8 @@ void* thread_integral(void* arg) {
 
         sem_wait(&sdat.sem_stk);
         if (stk_sz > MAX_ELEMS_LOCAL_STK && sdat.global_stk.empty()) {
-            while (stk.size() > stk_sz / 4) {
+            //std::cout << "DROP INTO GLOBAL" << std::endl;
+            while (stk.size() > 1) {
                 task_t tsk = stk.top();
                 stk.pop();
                 sdat.global_stk.push(tsk);

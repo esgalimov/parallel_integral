@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE S)
+    set(CMAKE_BUILD_TYPE Release)
 endif()
 
 find_package(GTest REQUIRED)

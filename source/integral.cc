@@ -14,11 +14,18 @@ int main(int argc, char* argv[]) try {
     sem_init(&integral::sdat.sem_ans, 1, 1);
     sem_init(&integral::sdat.sem_task_present, 1, 1);
 
-    double f_left = integral::func(left);
-    double f_right = integral::func(right);
+    double step = (right - left) / 16;
 
-    integral::sdat.global_stk.emplace(left, right, f_left, f_right,
-                     (f_left + f_right) * (right - left) / 2);
+    for (int i = 0; i < 16; ++i) {
+        double curr_left = left + step * i;
+        double curr_right = left + step * (i + 1);
+
+        double f_left = integral::func(left);
+        double f_right = integral::func(curr_right);
+
+        integral::sdat.global_stk.emplace(curr_left, curr_right, f_left, f_right,
+                     (f_left + f_right) * (curr_right - curr_left) / 2);
+    }
 
     std::vector<pthread_t> thr(4);
     std::vector<int> tids(4);
