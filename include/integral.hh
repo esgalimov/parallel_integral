@@ -71,7 +71,7 @@ void* thread_integral(void* arg) {
 
         double s_all = s_left_middle + s_middle_right;
 
-        if (std::abs(s_all - s_left_right) >= sdat.eps) {
+        if (std::abs(s_all - s_left_right) > sdat.eps * std::abs(s_left_right)) {
             stk.emplace(left, middle, f_left, f_middle, s_left_middle);
 
             left = middle;
@@ -96,13 +96,17 @@ void* thread_integral(void* arg) {
                 sem_wait(&sdat.sem_stk);
 
                 int get_global_cnt = sdat.global_stk.size() <= THR_NUM ? 1 : sdat.global_stk.size() / THR_NUM;
+                //int get_global_cnt = sdat.global_stk.size() <= 3 ? sdat.global_stk.size() : 3;
                 bool is_terminal = false;
 
                 for (int i = 0; i < get_global_cnt; ++i) {
                     task_t tsk = sdat.global_stk.top();
                     sdat.global_stk.pop();
                     stk.push(tsk);
-                    if (tsk.left > tsk.right) is_terminal = true;
+                    if (tsk.left > tsk.right) {
+                        is_terminal = true;
+                        break;
+                    }
                 }
 
                 if (!sdat.global_stk.empty())
@@ -166,7 +170,7 @@ double serial_integral_with_local_stack(double left, double right, double eps) {
 
         double s_all = s_left_middle + s_middle_right;
 
-        if (std::abs(s_all - s_left_right) >= eps) {
+        if (std::abs(s_all - s_left_right) > eps * std::abs(s_left_right)) {
             stk.emplace(left, middle, f_left, f_middle, s_left_middle);
 
             left = middle;
